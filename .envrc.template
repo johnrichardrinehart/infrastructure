@@ -5,6 +5,9 @@ export TF_VAR_vultr_api_key=
 export AWS_ACCESS_KEY_ID=
 export AWS_SECRET_ACCESS_KEY=
 
+## GCP
+export GOOGLE_APPLICATION_CREDENTIALS=gcp.json
+
 ## AWS IAM CSM: https://github.com/iann0036/iamlive
 #export AWS_CSM_ENABLED=true
 #export AWS_CSM_PORT=31000
