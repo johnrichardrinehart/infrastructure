@@ -11,8 +11,6 @@ provider "aws" {
 
 # algo
 resource aws_instance "algo" {
-    # instance_id = "i-05d3da7fc45b12af4"
-
     instance_type = "t2.micro"
 
     ami = "ami-02c45ea799467b51b"
@@ -63,20 +61,9 @@ runcmd:
 EOT
 }
 
-resource aws_instance "charm_dot_io" {
-    # instance_id = "i-0dc76eb4d9c9055be"
-
-    instance_type = "t3a.nano"
-
-    ami = "ami-0d1cd67c26f5fca19"
-}
-
 resource aws_instance "binance-bot" {
     ami = "ami-036915aa0cb1d91a1"
-
     instance_type = "t3.micro"
-
     ebs_optimized = true
-
     provider = aws.hk
 }
