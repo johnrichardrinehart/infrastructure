@@ -1,0 +1,11 @@
+## Vultr
+export TF_VAR_vultr_api_key=
+
+## AWS
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
+
+## AWS IAM CSM: https://github.com/iann0036/iamlive
+#export AWS_CSM_ENABLED=true
+#export AWS_CSM_PORT=31000
+#export AWS_CSM_HOST=127.0.0.1
