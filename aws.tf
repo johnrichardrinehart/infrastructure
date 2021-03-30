@@ -60,10 +60,3 @@ runcmd:
   - systemctl restart sshd.service
 EOT
 }
-
-resource aws_instance "binance-bot" {
-    ami = "ami-036915aa0cb1d91a1"
-    instance_type = "t3.micro"
-    ebs_optimized = true
-    provider = aws.hk
-}
