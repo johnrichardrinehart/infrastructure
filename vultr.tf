@@ -10,14 +10,14 @@ resource vultr_iso_private "john_os" {
   url = "https://hydra.johnrinehart.dev/build/18/download/1/nixos.iso"
 }
 
-data "vultr_instance" "CloudNix" {
+resource "vultr_instance" "CloudNix" {
   filter {
     name   = "label"
     values = ["CloudNix"]
   }
 }
 
-data "vultr_instance" "MarinaBrave" {
+resource "vultr_instance" "MarinaBrave" {
   filter {
     name   = "label"
     values = ["marinabrave"]
