@@ -7,19 +7,26 @@ provider "vultr" {
 
 # TODO: Support case open about the below which fails with 404 server not found (but server is alive)
 resource vultr_iso_private "john_os" {
-  url = "https://hydra.johnrinehart.dev/build/18/download/1/nixos.iso"
+  url = "https://hydra.johnrinehart.dev/build/20/download/1/nixos.iso"
 }
 
 resource "vultr_instance" "CloudNix" {
-  filter {
-    name   = "label"
-    values = ["CloudNix"]
-  }
+  region="ewr"
+  plan = "vc2-1c-1gb"
+  enable_ipv6 = true
 }
 
 resource "vultr_instance" "MarinaBrave" {
-  filter {
-    name   = "label"
-    values = ["marinabrave"]
-  }
-} 
+  region="ams"
+  plan = "vhf-1c-1gb"
+  enable_ipv6 = true
+}
+
+resource "vultr_instance" "Nix" {
+  region = "ewr"
+  plan = "vc2-1c-1gb"
+  enable_ipv6 = true
+  iso_id = vultr_iso_private.john_os.id
+
+  label = "Nix"
+}

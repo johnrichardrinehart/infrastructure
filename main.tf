@@ -16,11 +16,9 @@ terraform {
     }
   }
 
-
   backend "http" {
     address        = "http://localhost:8080"
     lock_address   = "http://localhost:8080"
     unlock_address = "http://localhost:8080"
   }
-
 }
