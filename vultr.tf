@@ -14,6 +14,7 @@ resource "vultr_instance" "CloudNix" {
   region="ewr"
   plan = "vc2-1c-1gb"
   enable_ipv6 = true
+  label = "hydra"
 }
 
 resource "vultr_instance" "MarinaBrave" {
