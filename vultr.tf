@@ -9,9 +9,3 @@ provider "vultr" {
 #resource vultr_iso_private "john_os" {
 #  url = "https://hydra.johnrinehart.dev/build/25/download/1/nixos.iso"
 #}
-
-resource "vultr_instance" "MarinaBrave" {
-  region="ams"
-  plan = "vhf-1c-1gb"
-  enable_ipv6 = true
-}
