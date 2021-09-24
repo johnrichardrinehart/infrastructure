@@ -5,17 +5,10 @@ provider "vultr" {
   retry_limit = 3
 }
 
-# TODO: Support case open about the below which fails with 404 server not found (but server is alive)
-resource vultr_iso_private "john_os" {
-  url = "https://hydra.johnrinehart.dev/build/25/download/1/nixos.iso"
-}
-
-resource "vultr_instance" "CloudNix" {
-  region="ewr"
-  plan = "vc2-1c-1gb"
-  enable_ipv6 = true
-  label = "hydra"
-}
+## TODO: Support case open about the below which fails with 404 server not found (but server is alive)
+#resource vultr_iso_private "john_os" {
+#  url = "https://hydra.johnrinehart.dev/build/25/download/1/nixos.iso"
+#}
 
 resource "vultr_instance" "MarinaBrave" {
   region="ams"
