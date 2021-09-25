@@ -14,6 +14,10 @@ terraform {
       source  = "hashicorp/google"
       version = "3.62.0"
     }
+
+    b2 = {
+      source = "Backblaze/b2"
+    }
   }
 
   backend "http" {
