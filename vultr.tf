@@ -5,7 +5,6 @@ provider "vultr" {
   retry_limit = 3
 }
 
-## TODO: Support case open about the below which fails with 404 server not found (but server is alive)
-#resource vultr_iso_private "john_os" {
-#  url = "https://hydra.johnrinehart.dev/build/25/download/1/nixos.iso"
-#}
+resource vultr_iso_private "john_os" {
+  url = "https://f000.backblazeb2.com/file/JohnOS-ISOs/johnos_dirty-21.11.20210923.51bcdc4-x86_64-linux.iso"
+}
