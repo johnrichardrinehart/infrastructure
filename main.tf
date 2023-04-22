@@ -1,10 +1,5 @@
 terraform {
   required_providers {
-    vultr = {
-      source  = "vultr/vultr"
-      version = "2.4.2"
-    }
-
     aws = {
       source  = "hashicorp/aws"
       version = "3.60.0"
@@ -16,7 +11,7 @@ terraform {
     }
 
     b2 = {
-      source = "Backblaze/b2"
+      source  = "Backblaze/b2"
       version = "0.7.0"
     }
   }
