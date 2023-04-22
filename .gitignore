@@ -1,4 +1,3 @@
 .terraform/
 .env
-.envrc
 gcp.json
