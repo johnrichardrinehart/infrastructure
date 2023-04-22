@@ -51,6 +51,10 @@
 
         defaultPackage = packages.terraform;
         defaultApp = apps.terraform;
+
+        devShell = pkgs.mkShell {
+          buildInputs = [ pkgs.terraform ];
+        };
       }
     );
 }
