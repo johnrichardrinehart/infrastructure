@@ -78,19 +78,12 @@ resource "google_compute_instance" "webbie" {
   }
 }
 
-#resource "google_compute_machine_image" "johnos" {
-#  provider        = google-beta
-#  project = google_project.webbie.project_id
-#  #zone = "us-west1"
-#  name            = "johnos"
-#  source_instance = data.google_storage_bucket_object.gce-image.self_link
-#}
-
-
 resource "google_compute_image" "johnos" {
   name = "johnos"
   project = google_project.webbie.project_id
-  source_image = replace(trimsuffix(data.google_storage_bucket_object.gce-image.self_link, ".raw.tar.gz"),"/\\.|_/","-")
+  raw_disk {
+     source = data.google_storage_bucket_object.gce-image.self_link
+  }
 }
 
 data "google_storage_bucket_object" "gce-image" {
