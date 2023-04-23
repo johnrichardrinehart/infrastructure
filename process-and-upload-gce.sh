@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -xe
+set -euox pipefail
 
 img_path=$(echo gce/*.tar.gz)
 img_name=${IMAGE_NAME:-$(basename "$img_path")}
@@ -10,15 +9,4 @@ img_family=$(echo "$img_id" | cut -d - -f1-4)
 if ! gsutil ls "gs://${BUCKET_NAME}/$img_name"; then
   gsutil cp "$img_path" "gs://${BUCKET_NAME}/$img_name"
   gsutil acl ch -u AllUsers:R "gs://${BUCKET_NAME}/$img_name"
-
-  gcloud compute images create \
-    "$img_id" \
-    --source-uri "gs://${BUCKET_NAME}/$img_name" \
-    --family="$img_family"
-
-  gcloud compute images add-iam-policy-binding \
-    "$img_id" \
-    --member='allAuthenticatedUsers' \
-    --role='roles/compute.imageUser'
 fi
-(END)
