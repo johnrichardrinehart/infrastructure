@@ -1,3 +1,5 @@
 .terraform/
 .env
 gcp.json
+/gce
+/.direnv
