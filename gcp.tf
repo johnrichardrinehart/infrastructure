@@ -87,7 +87,7 @@ resource "google_compute_image" "johnos" {
 }
 
 data "google_storage_bucket_object" "gce-image" {
-  name   = "nixos-image-23.05.20230412.6b70761-x86_64-linux.raw.tar.gz"
+  name   = "nixos-image-23.05.20230421.2362848-x86_64-linux.raw.tar.gz"
   bucket = google_storage_bucket.gce-images.name
 }
 
