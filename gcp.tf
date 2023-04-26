@@ -80,14 +80,14 @@ resource "google_compute_instance" "webbie" {
 }
 
 resource "google_compute_firewall" "rules" {
-  name        = "allow-8080-for-headscale"
+  name        = "allow-80-for-headscale"
   network     =  google_compute_network.default.id
-  description = "Allow inbound on 8080 for headscale connections"
+  description = "Allow inbound on 80 for headscale connections"
   project = google_project.webbie.project_id
 
   allow {
     protocol  = "tcp"
-    ports     = ["8080"]
+    ports     = ["80"]
   }
 
   source_ranges = ["0.0.0.0/0"]
@@ -108,7 +108,7 @@ resource "google_compute_network" "default" {
 }
 
 data "google_storage_bucket_object" "gce-image" {
-  name   = "nixos-image-23.05.20230421.2362848-x86_64-linux.raw.tar.gz"
+  name   = file("./latest_gce")
   bucket = google_storage_bucket.gce-images.name
 }
 
