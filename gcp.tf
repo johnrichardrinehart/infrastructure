@@ -1,13 +1,11 @@
 provider "google" {
   alias = "webbie"
-  project = "webbie-295322"
   region  = "us-west1"
   zone    = "us-west1-a"
 }
 
 data "google_billing_account" "johnrinehart" {
   billing_account = "0175F6-DCC364-FB45AD"
-  #display_name = "John Rinehart Personal Billing Account"
   open         = true
 }
 
@@ -72,10 +70,28 @@ resource "google_compute_instance" "webbie" {
   // Override fields from machine image
   can_ip_forward = true
 
+  tags = ["headscale"]
+
   labels = {
     project    = "webbie"
     importance = "1" # 1 to 5, 1 is highest
   }
+
+}
+
+resource "google_compute_firewall" "rules" {
+  name        = "allow-8080-for-headscale"
+  network     =  google_compute_network.default.id
+  description = "Allow inbound on 8080 for headscale connections"
+  project = google_project.webbie.project_id
+
+  allow {
+    protocol  = "tcp"
+    ports     = ["8080"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["headscale"]
 }
 
 resource "google_compute_image" "johnos" {
@@ -84,6 +100,11 @@ resource "google_compute_image" "johnos" {
   raw_disk {
      source = data.google_storage_bucket_object.gce-image.self_link
   }
+}
+
+resource "google_compute_network" "default" {
+  name = "default"
+  description = "Default network for the project"
 }
 
 data "google_storage_bucket_object" "gce-image" {
