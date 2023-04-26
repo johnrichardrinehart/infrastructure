@@ -53,7 +53,10 @@
         defaultApp = apps.terraform;
 
         devShell = pkgs.mkShell {
-          buildInputs = [ pkgs.terraform ];
+          buildInputs = [ pkgs.terraform pkgs.google-cloud-sdk ];
+          shellHook = ''
+            source ./.env.sh;
+          '';
         };
       }
     );
